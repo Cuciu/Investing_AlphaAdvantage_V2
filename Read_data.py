@@ -38,15 +38,15 @@ def read_data(symbol):
 def read_api(symbol):
     import requests
 
-    url_eps = f"https://www.alphavantage.co/query?function=EARNINGS&symbol={symbol}&apikey=AILA1I4F6KIGWUD6"
+    url_eps = f"https://www.alphavantage.co/query?function=EARNINGS&symbol={symbol}&apikey="[your API key]""
     data_ernings = requests.get(url_eps).json()
-    url_dividends = f"https://www.alphavantage.co/query?function=DIVIDENDS&symbol={symbol}&apikey=AILA1I4F6KIGWUD6"
+    url_dividends = f"https://www.alphavantage.co/query?function=DIVIDENDS&symbol={symbol}&apikey="[your API key]""
     data_dividends = requests.get(url_dividends).json()
-    url_incomestatement = f"https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol={symbol}&apikey=AILA1I4F6KIGWUD6"
+    url_incomestatement = f"https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol={symbol}&apikey="[your API key]""
     data_incomestatement = requests.get(url_incomestatement).json()
-    url_balancesheet = f"https://www.alphavantage.co/query?function=BALANCE_SHEET&symbol={symbol}&apikey=AILA1I4F6KIGWUD6"
+    url_balancesheet = f"https://www.alphavantage.co/query?function=BALANCE_SHEET&symbol={symbol}&apikey="[your API key]""
     data_balancesheet = requests.get(url_balancesheet).json()
-    url_price = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&apikey=AILA1I4F6KIGWUD6"
+    url_price = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&apikey="[your API key]""
     data_price = requests.get(url_price).json()
 
     # Parse the JSON data
