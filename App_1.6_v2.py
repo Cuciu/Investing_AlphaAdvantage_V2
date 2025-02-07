@@ -11,19 +11,15 @@ def read_data(symbol):
     #file_path_ernings = r'D:\Python\Investing5.0\Local\SAMPLE_IBM_Earning.json'
     with open(file_path_ernings, 'r') as file:
         data_ernings = file.read()
-
     #file_path_dividends = r'D:\Python\Investing5.0\Local\SAMPLE_IBM_Dividends.json'
     with open(file_path_dividends, 'r') as file:
         data_dividends = file.read()
-
     #file_path_balancesheet =r'D:\Python\Investing5.0\Local\SAMPLE_IBM_Balance-sheet.json'
     with open(file_path_balancesheet, 'r') as file:
         data_balancesheet = file.read()
-    
     #file_path_incomestatement = r'D:\Python\Investing5.0\Local\SAMPLE_IBM_Income-stetement.json'
     with open(file_path_incomestatement, 'r') as file:
         data_incomestatement = file.read()
-
     #file_path_price = r'D:\Python\Investing5.0\Local\SAMPLE_IBM_Price-time-series.json'
     with open(file_path_price, 'r') as file:
         data_price = file.read()
@@ -42,15 +38,15 @@ def read_data(symbol):
 def read_api(symbol):
     import requests
 
-    url_eps = f"https://www.alphavantage.co/query?function=EARNINGS&symbol={symbol}&apikey=AILA1I4F6KIGWUD6"
+    url_eps = f"https://www.alphavantage.co/query?function=EARNINGS&symbol={symbol}&apikey=[your API key https://www.alphavantage.co/support/#api-key]"
     data_ernings = requests.get(url_eps).json()
-    url_dividends = f"https://www.alphavantage.co/query?function=DIVIDENDS&symbol={symbol}&apikey=AILA1I4F6KIGWUD6"
+    url_dividends = f"https://www.alphavantage.co/query?function=DIVIDENDS&symbol={symbol}&apikey=[your API key https://www.alphavantage.co/support/#api-key]""
     data_dividends = requests.get(url_dividends).json()
-    url_incomestatement = f"https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol={symbol}&apikey=AILA1I4F6KIGWUD6"
+    url_incomestatement = f"https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol={symbol}&apikey=[your API key https://www.alphavantage.co/support/#api-key]""
     data_incomestatement = requests.get(url_incomestatement).json()
-    url_balancesheet = f"https://www.alphavantage.co/query?function=BALANCE_SHEET&symbol={symbol}&apikey=AILA1I4F6KIGWUD6"
+    url_balancesheet = f"https://www.alphavantage.co/query?function=BALANCE_SHEET&symbol={symbol}&apikey=[your API key https://www.alphavantage.co/support/#api-key]""
     data_balancesheet = requests.get(url_balancesheet).json()
-    url_price = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&apikey=AILA1I4F6KIGWUD6"
+    url_price = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&apikey=[your API key https://www.alphavantage.co/support/#api-key]""
     data_price = requests.get(url_price).json()
 
     # Parse the JSON data
