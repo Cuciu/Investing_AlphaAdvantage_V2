@@ -38,23 +38,16 @@ def read_data(symbol):
 def read_api(symbol):
     import requests
 
-    url_eps = f"https://www.alphavantage.co/query?function=EARNINGS&symbol={symbol}&apikey=[your API key https://www.alphavantage.co/support/#api-key]"
-    data_ernings = requests.get(url_eps).json()
-    url_dividends = f"https://www.alphavantage.co/query?function=DIVIDENDS&symbol={symbol}&apikey=[your API key https://www.alphavantage.co/support/#api-key]""
-    data_dividends = requests.get(url_dividends).json()
-    url_incomestatement = f"https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol={symbol}&apikey=[your API key https://www.alphavantage.co/support/#api-key]""
-    data_incomestatement = requests.get(url_incomestatement).json()
-    url_balancesheet = f"https://www.alphavantage.co/query?function=BALANCE_SHEET&symbol={symbol}&apikey=[your API key https://www.alphavantage.co/support/#api-key]""
-    data_balancesheet = requests.get(url_balancesheet).json()
-    url_price = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&apikey=[your API key https://www.alphavantage.co/support/#api-key]""
-    data_price = requests.get(url_price).json()
-
-    # Parse the JSON data
-    json_data_ernings = json.loads(data_ernings)
-    json_data_dividends = json.loads(data_dividends)
-    json_data_incomestatement = json.loads(data_incomestatement)
-    json_data_balancesheet = json.loads(data_balancesheet)
-    json_data_price = json.loads(data_price)
+    url_eps = f'https://www.alphavantage.co/query?function=EARNINGS&symbol={symbol}&apikey=[your API key]'
+    json_data_ernings = requests.get(url_eps).json()
+    url_dividends = f"https://www.alphavantage.co/query?function=DIVIDENDS&symbol={symbol}&apikey=[your API key]"
+    json_data_dividends = requests.get(url_dividends).json()
+    url_incomestatement = f"https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol={symbol}&apikey=[your API key]"
+    json_data_incomestatement = requests.get(url_incomestatement).json()
+    url_balancesheet = f"https://www.alphavantage.co/query?function=BALANCE_SHEET&symbol={symbol}&apikey=[your API key]"
+    json_data_balancesheet = requests.get(url_balancesheet).json()
+    url_price = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&apikey=[your API key]"
+    json_data_price = requests.get(url_price).json()
 
     json_data = [json_data_ernings, json_data_dividends, json_data_incomestatement, json_data_balancesheet, json_data_price]
 
@@ -70,6 +63,8 @@ def fundamentals(symbol, nb_shares, RealDiscountRate, AverageInflation, price_5_
     json_data_incomestatement = data[2]
     json_data_balancesheet = data[3]
     json_data_price = data[4]
+
+    current_year = dt.datetime.now().year
 
     # Extract EPS and year
     eps_data = []
@@ -92,6 +87,8 @@ def fundamentals(symbol, nb_shares, RealDiscountRate, AverageInflation, price_5_
                 temp_data[year] = amount
         for year, amount in temp_data.items():
             dividends_data.append({'year': year, 'amount': amount})
+    else:
+        dividends_data = [{'year': str(current_year - i), 'amount': 0} for i in range(5)]
     #print(dividends_data)
 
     #RORE 5 years
